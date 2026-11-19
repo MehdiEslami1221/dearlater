@@ -1,0 +1,10 @@
+node_modules/
+.next/
+data/
+.env*
+!.env.example
+*.tsbuildinfo
+next-env.d.ts
+# User-supplied fonts are included for local use; check distribution rights before publishing.
+public/fonts/IRANSansX-*.woff2
+cloudflared.exe

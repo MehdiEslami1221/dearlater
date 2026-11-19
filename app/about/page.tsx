@@ -1,0 +1,2 @@
+import {Brand} from "../Stationery";
+export default function About(){return <main className="letterpage" lang="en" dir="ltr"><Brand/><section className="panel bio"><small>About DearLater</small><h1>Mehdi Eslami</h1><p>Developer of DearLater, a personal writing desk for letters, scheduled messages and reminders on Telegram.</p><a href="https://mehdieslami.ir">mehdieslami.ir ↗</a></section><footer><a href="/">← Writing desk</a></footer></main>}

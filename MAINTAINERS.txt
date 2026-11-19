@@ -1,0 +1,50 @@
+DearLater maintenance notes
+
+Start here
+Read README.md for setup and README.fa.md for the Windows walkthrough. Check
+the current branch, recent commits and working tree before planning a change.
+These notes describe the initial public release. Prefer the current source
+and migrations if the project has moved on.
+
+Runtime and boundaries
+DearLater is a single-owner Next.js app. A Node.js 24 process owns the SQLite
+database and the personal Telegram connection. Demo mode needs no Telegram
+credentials. Live mode requires confirmation from the owner's Telegram account.
+Public test mode exposes individual reader pages and their assets through a
+temporary tunnel. It does not provide public access to the writing desk.
+
+Where changes belong
+- app/page.tsx handles composition, confirmation, local drafts and the outbox.
+- app/Designer.tsx, app/Stationery.tsx and lib/design.ts share the envelope
+  design between the sender's preview and the recipient's letter.
+- app/e/[id]/page.tsx renders the countdown and released letter. The release
+  decision lives in app/api/envelope/[id]/route.ts on the server.
+- lib/time.ts converts the selected wall-clock time and zone to an instant.
+- app/api/desk/route.ts validates requests and records delivery outcomes.
+  lib/account.ts manages QR sign-in, two-step verification and scheduling.
+- lib/db.ts owns the schema. Supply defaults for older rows when adding
+  fields, including letters saved before envelope customization existed.
+- scripts/reader-gateway.mjs defines the public route allowlist.
+  scripts/public-test.mjs starts the temporary tunnel and the private desk.
+
+Before shipping
+Run npm ci, npm run check and npm run build with Node.js 24. Smoke-test a
+demo envelope before and after its deadline. Inspect the reader API before
+release: the body must be null. Check the same letter in English and Persian,
+including countdown units and the selected time zone. Try duplicate submission
+and reopen an older envelope. If public routing changed, verify the reader on
+a second device and confirm that /api/desk remains inaccessible through the
+tunnel. For Telegram changes, use Saved Messages for the first live test.
+Build and demo tests alone do not verify live Telegram delivery.
+
+Keep local state private
+The local owner supplies Telegram credentials and licensed Persian fonts.
+Keep .env.local, data/, account sessions and private messages outside Git.
+For a multi-user release, replace the single account state and scope every
+desk operation to its owner before enabling public sign-in. The reader's
+random link grants access to its holder after the deadline.
+
+Release notes
+If a change alters the Windows production build, update the build marker in
+both BAT launchers so existing installations rebuild. Update both READMEs
+when setup or user-visible behavior changes.

@@ -1,0 +1,35 @@
+{
+  "name": "dearlater",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "next dev -H 127.0.0.1",
+    "build": "next build --webpack",
+    "start": "next start -H 127.0.0.1",
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "^16.0.0",
+    "react": "^19",
+    "react-dom": "^19",
+    "telegram": "^2.26.0",
+    "qrcode": "^1.5.4",
+    "@fontsource/dm-sans": "^5.2.0",
+    "lucide-react": "^0.468.0",
+    "react-multi-date-picker": "^4.5.2",
+    "react-date-object": "^2.1.9"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3",
+    "@types/node": "^24",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/qrcode": "^1.5",
+    "tailwindcss": "^4",
+    "@tailwindcss/postcss": "^4",
+    "postcss": "^8"
+  }
+}
