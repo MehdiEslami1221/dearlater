@@ -2,6 +2,8 @@
 
 A bilingual Persian / English writing desk for Telegram. Compose a scheduled personal message, send a sealed letter with a server-enforced opening time, or schedule a reminder in Saved Messages.
 
+![DearLater sealed envelope with a countdown to opening](docs/images/sealed-letter.png)
+
 [راهنمای فارسی](README.fa.md) · [Maintenance notes](MAINTAINERS.txt)
 
 ## Run locally on Windows
